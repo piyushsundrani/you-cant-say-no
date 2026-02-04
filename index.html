@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yes or No 😄</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .button-box {
+            position: relative;
+            height: 250px;
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        #yesBtn {
+            font-size: 1.5rem;
+            padding: 14px 36px;
+        }
+
+        #noBtn {
+            position: absolute;
+        }
+
+        #resultGif {
+            display: none;
+        }
+
+        #resultGif img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container text-center mt-5">
+    <h2 class="mb-4">Do you like this website? 😁</h2>
+
+    <div class="button-box mx-auto d-flex align-items-center justify-content-center" id="buttonBox">
+        <button id="yesBtn" class="btn btn-success me-3">Yes</button>
+        <button id="noBtn" class="btn btn-danger">No</button>
+    </div>
+
+    <div id="resultGif" class="mt-4">
+        <h3>You said YES! 🎉</h3>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3JjZGJ6ZTFubWx5ZmpvYmFjN3Bzd2p1Nm5sNWNnNWppY2t4dThzYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o6Zt481isNVuQI1l6/giphy.gif" alt="Celebration GIF">
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const box = document.getElementById("buttonBox");
+    const yesBtn = document.getElementById("yesBtn");
+    const resultGif = document.getElementById("resultGif");
+
+    function moveNoButton() {
+        const boxRect = box.getBoundingClientRect();
+        const btnRect = noBtn.getBoundingClientRect();
+
+        const maxX = box.clientWidth - btnRect.width;
+        const maxY = box.clientHeight - btnRect.height;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        noBtn.style.left = randomX + "px";
+        noBtn.style.top = randomY + "px";
+    }
+
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("click", moveNoButton);
+
+    yesBtn.addEventListener("click", () => {
+        box.style.display = "none";
+        resultGif.style.display = "block";
+    });
+</script>
+
+</body>
+</html>
