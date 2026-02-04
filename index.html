@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Yes or No 😄</title>
+    <title>Valentine 💖</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap -->
@@ -10,85 +10,122 @@
 
     <style>
         body {
-            background: #f8f9fa;
+            min-height: 100vh;
+            background: #f4c2cf;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Segoe UI", sans-serif;
         }
 
-        .button-box {
+        .card-box {
+            background: #f8f8f8;
+            border-radius: 18px;
+            padding: 40px 30px 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             position: relative;
-            height: 250px;
-            border: 2px dashed #ccc;
-            border-radius: 12px;
-            background: #fff;
-            overflow: hidden;
+        }
+
+        .avatar {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .button-area {
+            position: relative;
+            height: 120px;
         }
 
         #yesBtn {
-            font-size: 1.5rem;
-            padding: 14px 36px;
+            background: #e91e63;
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            padding: 14px 50px;
+            border-radius: 50px;
+            font-weight: 600;
         }
 
         #noBtn {
-            position: relative; /* NOT absolute on load */
+            position: relative;
+            background: #e0e0e0;
+            border: none;
+            color: #333;
+            font-size: 0.95rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-left: 20px;
         }
 
-        #resultGif {
+        .hint {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        #gifBox {
             display: none;
         }
 
-        #resultGif img {
+        #gifBox img {
             max-width: 100%;
-            height: auto;
+            border-radius: 12px;
         }
     </style>
 </head>
 <body>
 
-<div class="container text-center mt-5">
-    <h2 class="mb-4">Do you like this website? 😁</h2>
+<div class="card-box">
+    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="avatar" alt="cute">
 
-    <div class="button-box mx-auto d-flex align-items-center justify-content-center" id="buttonBox">
-        <button id="yesBtn" class="btn btn-success me-3">Yes</button>
-        <button id="noBtn" class="btn btn-danger">No</button>
+    <h2>nirali will you be my valentine?</h2>
+
+    <div class="button-area d-flex align-items-center justify-content-center" id="box">
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
     </div>
 
-    <div id="resultGif" class="mt-4">
-        <h3>You said YES! 🎉</h3>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3JjZGJ6ZTFubWx5ZmpvYmFjN3Bzd2p1Nm5sNWNnNWppY2t4dThzYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o6Zt481isNVuQI1l6/giphy.gif" alt="Celebration GIF">
+    <div class="hint">"No" seems a bit shy 😈</div>
+
+    <div id="gifBox" class="mt-4">
+        <h4>Yayyy! 💖</h4>
+        <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
     </div>
 </div>
 
 <script>
     const noBtn = document.getElementById("noBtn");
-    const box = document.getElementById("buttonBox");
+    const box = document.getElementById("box");
     const yesBtn = document.getElementById("yesBtn");
-    const resultGif = document.getElementById("resultGif");
+    const gifBox = document.getElementById("gifBox");
 
-    function moveNoButton() {
-        // switch to absolute only when moving
+    function moveNo() {
         noBtn.style.position = "absolute";
 
-        const boxRect = box.getBoundingClientRect();
-        const btnRect = noBtn.getBoundingClientRect();
+        const maxX = box.clientWidth - noBtn.offsetWidth;
+        const maxY = box.clientHeight - noBtn.offsetHeight;
 
-        const maxX = box.clientWidth - btnRect.width;
-        const maxY = box.clientHeight - btnRect.height;
-
-        const randomX = Math.random() * maxX;
-        const randomY = Math.random() * maxY;
-
-        noBtn.style.left = randomX + "px";
-        noBtn.style.top = randomY + "px";
+        noBtn.style.left = Math.random() * maxX + "px";
+        noBtn.style.top = Math.random() * maxY + "px";
     }
 
-    noBtn.addEventListener("mouseover", moveNoButton);
-    noBtn.addEventListener("click", moveNoButton);
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("click", moveNo);
 
     yesBtn.addEventListener("click", () => {
         box.style.display = "none";
-        resultGif.style.display = "block";
+        document.querySelector(".hint").style.display = "none";
+        gifBox.style.display = "block";
     });
 </script>
-
 
 </body>
 </html>
