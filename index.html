@@ -28,7 +28,7 @@
         }
 
         #noBtn {
-            position: absolute;
+            position: relative; /* NOT absolute on load */
         }
 
         #resultGif {
@@ -64,6 +64,9 @@
     const resultGif = document.getElementById("resultGif");
 
     function moveNoButton() {
+        // switch to absolute only when moving
+        noBtn.style.position = "absolute";
+
         const boxRect = box.getBoundingClientRect();
         const btnRect = noBtn.getBoundingClientRect();
 
@@ -85,6 +88,7 @@
         resultGif.style.display = "block";
     });
 </script>
+
 
 </body>
 </html>
