@@ -44,14 +44,25 @@
             height: 120px;
         }
 
+        .yes-wrapper {
+            width: 140px; /* locks position */
+            display: flex;
+            justify-content: center;
+        }
+
         #yesBtn {
             background: #e91e63;
             border: none;
             color: #fff;
-            font-size: 1.4rem;
-            padding: 14px 50px;
+            font-size: 1rem;
+            padding: 10px 28px;
             border-radius: 50px;
             font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        #yesBtn.grow {
+            transform: scale(1.35);
         }
 
         #noBtn {
@@ -59,10 +70,10 @@
             background: #e0e0e0;
             border: none;
             color: #333;
-            font-size: 0.95rem;
-            padding: 6px 16px;
-            border-radius: 20px;
-            margin-left: 20px;
+            font-size: 1rem;
+            padding: 10px 28px;
+            border-radius: 50px;
+            margin-left: 12px;
         }
 
         .hint {
@@ -86,12 +97,15 @@
 <div class="card-box">
     <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="avatar" alt="cute">
 
-    <h2>nirali will you be my valentine?</h2>
+    <h2>Will you be my valentine?</h2>
 
     <div class="button-area d-flex align-items-center justify-content-center" id="box">
-        <button id="yesBtn">Yes</button>
+        <div class="yes-wrapper">
+            <button id="yesBtn">Yes</button>
+        </div>
         <button id="noBtn">No</button>
     </div>
+
 
     <div class="hint">"No" seems a bit shy 😈</div>
 
